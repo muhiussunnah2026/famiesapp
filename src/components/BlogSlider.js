@@ -71,8 +71,8 @@ export default function BlogSlider() {
   if (posts.length === 0) return null;
 
   return (
-    <section 
-      className="py-20 bg-white dark:bg-black overflow-hidden relative"
+    <section
+      className="py-20 md:py-28 overflow-hidden relative section"
       onMouseEnter={stopAutoPlay}
       onMouseLeave={startAutoPlay}
     >
@@ -91,8 +91,8 @@ export default function BlogSlider() {
             transition={{ duration: 0.6 }}
           >
             <span className="text-primary font-bold tracking-wider uppercase text-sm mb-2 block">Vår Blogg</span>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white leading-tight">
-              Senaste <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-500">Artiklar</span> & Tips.
+            <h2 className="text-4xl md:text-5xl font-black text-ink-900 dark:text-white leading-tight">
+              Senaste <span className="text-brand-gradient">artiklar</span> & tips.
             </h2>
           </motion.div>
 
@@ -175,10 +175,10 @@ export default function BlogSlider() {
         {/* --- View All Button --- */}
         <div className="mt-14 text-center">
           <Link href="/blog">
-            <motion.button 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-10 py-4 rounded-full bg-pink-500 hover:bg-pink-600 text-white font-extrabold text-lg shadow-xl shadow-pink-500/30 flex items-center gap-3 mx-auto transition-all"
+            <motion.button
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
+              className="press px-10 py-4 rounded-full bg-primary hover:bg-primary-500 text-white font-extrabold text-lg shadow-pink flex items-center gap-3 mx-auto transition-all"
             >
               Se alla artiklar <ChevronRight size={20} className="stroke-[3px]" />
             </motion.button>

@@ -74,10 +74,10 @@ export default function Navbar() {
   }
 
   return (
-    <nav 
+    <nav
       className={`fixed top-0 w-full z-50 transition-all duration-500 ease-in-out ${
-        scrolled 
-          ? "bg-white/90 dark:bg-black/90 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-800/50 h-20 shadow-sm"
+        scrolled
+          ? "glass h-20 shadow-soft"
           : "bg-transparent border-transparent h-24 md:h-28"
       }`}
     >
@@ -89,9 +89,7 @@ export default function Navbar() {
             <Link href="/" className="flex items-center gap-3 group">
               
               {/* Logo Box: Scroll করলে Black হবে */}
-              <div className={`relative w-10 h-10 md:w-11 md:h-11 rounded-xl overflow-hidden shadow-sm flex items-center justify-center transition-all duration-300 ${
-                scrolled ? 'bg-black p-1.5' : 'bg-transparent p-0'
-              }`}>
+              <div className="relative w-11 h-11 md:w-12 md:h-12 rounded-2xl overflow-hidden flex items-center justify-center bg-gradient-to-br from-primary/20 to-secondary/50 p-1.5 ring-1 ring-white/60 dark:ring-white/10 shadow-soft transition-all duration-300">
                  <Image 
                    src="/logo.png" 
                    alt="Famies Logo" 
@@ -102,7 +100,7 @@ export default function Navbar() {
               </div>
 
               {/* Text: Size ছোট করা হয়েছে (text-2xl) */}
-              <span className="text-2xl md:text-[26px] font-extrabold tracking-tight text-gray-900 dark:text-white leading-none pb-0.5">
+              <span className="text-2xl md:text-[26px] font-black tracking-tight text-ink-900 dark:text-white leading-none pb-0.5">
                 famies
               </span>
             </Link>
@@ -181,11 +179,11 @@ export default function Navbar() {
                   Login
                 </Link> */}
 
-                <Link 
-                  href="/#download" 
-                  className="hidden md:flex items-center gap-2 text-white px-6 py-3 rounded-full font-bold transition-all duration-300 shadow-lg transform hover:scale-105 bg-primary hover:bg-pink-600 shadow-primary/30"
+                <Link
+                  href="/#download"
+                  className="press hidden md:flex items-center gap-2 text-white px-6 py-3 rounded-full font-bold transition-all duration-300 bg-primary hover:bg-primary-500 shadow-pink"
                 >
-                  <Download size={20} />
+                  <Download size={18} />
                   Ladda ner
                 </Link>
               </>

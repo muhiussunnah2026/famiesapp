@@ -36,10 +36,9 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative bg-white dark:bg-black pt-20 pb-10 border-t border-gray-100 dark:border-gray-900 overflow-hidden">
-      
-      {/* ব্যাকগ্রাউন্ড ব্লার এফেক্ট */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+    <footer className="relative pt-20 pb-10 border-t border-ink-100/80 dark:border-ink-700/50 overflow-hidden section">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary/30 rounded-full blur-[120px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -48,19 +47,19 @@ export default function Footer() {
           {/* ১. ব্র্যান্ড ইনফো ও লোগো */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-6">
-              <div className="relative w-10 h-10">
-                <Image 
-                  src="/logo.png" 
-                  alt="Famies Logo" 
-                  width={40} 
-                  height={40} 
-                  className="object-contain"
+              <div className="relative w-11 h-11 rounded-2xl overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/50 p-1.5 ring-1 ring-white/60 dark:ring-white/10 shadow-soft">
+                <Image
+                  src="/logo.png"
+                  alt="Famies Logo"
+                  width={44}
+                  height={44}
+                  className="object-contain w-full h-full"
                 />
               </div>
-              <span className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">Famies</span>
+              <span className="text-2xl font-black text-ink-900 dark:text-white tracking-tight">Famies</span>
             </Link>
-            <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-6">
-              Empowering modern families with AI-driven insights, health tracking, and a loving community. Making parenting simpler, together.
+            <p className="text-ink-500 dark:text-ink-300 text-sm leading-relaxed mb-6">
+              Byggd av föräldrar, för föräldrar. Få utvalda evenemang, tips och idéer — nära dig. Mindre skärmtid, mer familjetid.
             </p>
             
             {/* সোশ্যাল আইকন */}
@@ -71,35 +70,19 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* ২. নেভিগেশন লিংকস */}
+          {/* Quick Links */}
           <div>
-            <h4 className="font-bold text-gray-900 dark:text-white mb-6">Quick Links</h4>
+            <h4 className="font-bold text-ink-900 dark:text-white mb-6">Utforska</h4>
             <ul className="space-y-4">
-              {['Home', 'Features', 'How it Works', 'Community', 'Blog'].map((item) => (
-                <li key={item}>
-                  <Link href={`#${item.toLowerCase().replace(/\s+/g, '-')}`} className="text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors text-sm">
-                    {item}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* ৩. লিগ্যাল / সাপোর্ট */}
-          <div>
-            <h4 className="font-bold text-gray-900 dark:text-white mb-6">Support</h4>
-            <ul className="space-y-4">
-              <li>
-                <a href="mailto:support@famies.app" className="flex items-center gap-2 text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium">
-                  <Mail size={16} />
-                  support@famies.app
-                </a>
-              </li>
-              
-              {/* ✅ ডাইনামিক এবং আপডেটেড লিঙ্কস */}
-              {legalLinks.map((item) => (
+              {[
+                { name: 'Hem', href: '/' },
+                { name: 'Så funkar det', href: '/#how' },
+                { name: 'Funktioner', href: '/#features' },
+                { name: 'Recensioner', href: '/#reviews' },
+                { name: 'Blogg', href: '/blog' },
+              ].map((item) => (
                 <li key={item.name}>
-                  <Link href={item.href} className="text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors text-sm">
+                  <Link href={item.href} className="text-ink-500 dark:text-ink-300 hover:text-primary transition-colors text-sm">
                     {item.name}
                   </Link>
                 </li>
@@ -107,11 +90,31 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* ৪. অ্যাপ ডাউনলোড */}
+          {/* Support */}
           <div>
-            <h4 className="font-bold text-gray-900 dark:text-white mb-6">Get the App</h4>
-            <p className="text-gray-500 dark:text-gray-400 text-sm mb-4">
-              Experience the full power of Famies on your mobile device.
+            <h4 className="font-bold text-ink-900 dark:text-white mb-6">Support</h4>
+            <ul className="space-y-4">
+              <li>
+                <a href="mailto:support@famies.app" className="flex items-center gap-2 text-ink-500 dark:text-ink-300 hover:text-primary transition-colors text-sm font-medium">
+                  <Mail size={16} />
+                  support@famies.app
+                </a>
+              </li>
+              {legalLinks.map((item) => (
+                <li key={item.name}>
+                  <Link href={item.href} className="text-ink-500 dark:text-ink-300 hover:text-primary transition-colors text-sm">
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Get the App */}
+          <div>
+            <h4 className="font-bold text-ink-900 dark:text-white mb-6">Hämta appen</h4>
+            <p className="text-ink-500 dark:text-ink-300 text-sm mb-4">
+              Öppna Famies på din mobil — gratis, alltid.
             </p>
             <div className="flex flex-col gap-3">
               
@@ -141,9 +144,12 @@ export default function Footer() {
         </div>
 
         {/* বটম বার */}
-        <div className="pt-8 border-t border-gray-100 dark:border-gray-800 flex items-center justify-center">
-          <p className="text-gray-400 text-sm">
-            © {currentYear} Famies Inc. All rights reserved.
+        <div className="pt-8 border-t border-ink-100/70 dark:border-ink-700/50 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-ink-500 dark:text-ink-300 text-sm">
+            © {currentYear} FAM MAP AB • Famies. All rights reserved.
+          </p>
+          <p className="text-ink-500 dark:text-ink-300 text-xs">
+            Gjort med <span className="text-primary">♥</span> i Stockholm
           </p>
         </div>
 

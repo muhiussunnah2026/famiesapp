@@ -34,19 +34,17 @@ export default function Newsletter() {
   };
 
   return (
-    <section className="w-full py-20 px-4 relative overflow-hidden flex items-center justify-center">
-      
-      {/* --- অ্যানিমেটেড ব্যাকগ্রাউন্ড --- */}
+    <section className="w-full py-20 md:py-28 px-4 relative overflow-hidden flex items-center justify-center section">
       <div className="absolute inset-0 w-full h-full pointer-events-none">
-         <motion.div 
+         <motion.div
             animate={{ scale: [1, 1.2, 1], rotate: [0, 45, 0] }}
             transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/30 rounded-full blur-[120px]"
+            className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/25 rounded-full blur-[120px]"
          />
-         <motion.div 
+         <motion.div
             animate={{ scale: [1.2, 1, 1.2], rotate: [0, -45, 0] }}
             transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/30 rounded-full blur-[120px]"
+            className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/40 rounded-full blur-[120px]"
          />
       </div>
 
@@ -71,13 +69,13 @@ export default function Newsletter() {
                 <span className="text-sm font-semibold text-gray-800 dark:text-gray-200 uppercase tracking-wide">VECKOBREV</span>
               </div>
               
-              <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white leading-tight mb-4">
-                Lås upp exklusiva  <br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-600">familjetips.</span>
+              <h2 className="text-4xl md:text-5xl font-black text-ink-900 dark:text-white leading-tight mb-4">
+                Lås upp exklusiva<br/>
+                <span className="text-brand-gradient">familjetips.</span>
               </h2>
-              
-              <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                Gör som över 10 000 föräldrar och få våra utvalda evenemang, hälsoråd och berättelser från vår community.
+
+              <p className="text-lg text-ink-500 dark:text-ink-200 leading-relaxed">
+                Gör som över 10 000 föräldrar — få våra utvalda evenemang och veckans bästa tips direkt i inkorgen.
               </p>
             </div>
 

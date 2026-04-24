@@ -3,132 +3,222 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Download, PlayCircle, X } from 'lucide-react';
+import { Apple, Play, PlayCircle, X, Sparkles, MapPin, Star } from 'lucide-react';
 
 export default function Hero() {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-[#fff0f5] to-[#e6fcf0] dark:from-black dark:via-gray-900 dark:to-gray-900 overflow-hidden pt-20 pb-10">
-      
-      {/* ব্যাকগ্রাউন্ড ডেকোরেশন (তোমার আগের কোড) */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-[100px] animate-pulse" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/30 rounded-full blur-[100px]" />
+    <section className="relative w-full min-h-[92vh] flex items-center justify-center overflow-hidden pt-32 pb-20 section">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-16 items-center relative z-10 w-full">
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center relative z-10">
-        
-        {/* --- বাম পাশ: টেক্সট কন্টেন্ট (সুইডিশ আপডেট) --- */}
-        <motion.div 
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
+        {/* LEFT — copy */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-center lg:text-left"
         >
           {/* Badge */}
-          <div className="inline-block px-4 py-1.5 mb-6 rounded-full bg-secondary/50 border border-secondary text-green-800 dark:text-green-300 font-semibold text-sm">
-            🚀 #1 Appen för moderna familjer
-          </div>
-          
-          {/* Headline: সুন্দর রিদম ও কালার গ্রেডিয়েন্ট */}
-          <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-6 leading-[1.1]">
-            De bästa tipsen <br />
-            för <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-500">familjelivet.</span> <br />
-            Där du bor.
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.1, duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-2 mb-7 rounded-full glass shadow-soft"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-75 animate-ping" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
+            </span>
+            <span className="text-xs font-bold uppercase tracking-wider text-ink-700 dark:text-ink-100">
+              Byggd av föräldrar, för föräldrar
+            </span>
+          </motion.div>
+
+          {/* Headline — pain-point first */}
+          <h1 className="text-[2.6rem] sm:text-5xl lg:text-[4.25rem] leading-[1.02] font-black tracking-tight text-ink-900 dark:text-white mb-6">
+            <span className="block">"Vad ska vi</span>
+            <span className="block">
+              göra <span className="text-brand-gradient">idag?"</span>
+            </span>
+            <span className="block text-ink-700 dark:text-ink-100 text-[1.8rem] sm:text-3xl lg:text-[2.5rem] mt-3 font-extrabold">
+              Aldrig mer den frågan.
+            </span>
           </h1>
-          
-          {/* Subheadline: দুই লাইনে ভাঙা হয়েছে */}
-          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
-            Vad ska vi göra idag? <br />
-            <span className="text-gray-500 dark:text-gray-400">Andra familjer har redan svaret.</span>
+
+          {/* Pain → promise */}
+          <p className="text-lg md:text-xl text-ink-500 dark:text-ink-300 mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
+            Slipp googla, scrolla och fastna i idétorka.
+            Famies visar vad andra familjer redan gör —
+            <span className="text-ink-900 dark:text-white font-semibold"> nära dig, just idag</span>.
           </p>
 
-          {/* বাটন সেকশন */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            {/* ডাউনলোড বাটন */}
-            <Link href="/#download" className="flex items-center justify-center gap-2 bg-primary hover:bg-pink-500 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
-              <Download size={24} />
-              Ladda ner Famies
-            </Link>
-            
-            {/* ওয়াচ ডেমো বাটন */}
-            <button 
-              onClick={() => setIsVideoOpen(true)}
-              className="flex items-center justify-center gap-2 bg-white dark:bg-gray-800 text-gray-800 dark:text-white border-2 border-gray-100 dark:border-gray-700 hover:border-primary hover:text-primary px-8 py-4 rounded-full font-bold text-lg transition hover:bg-gray-50 dark:hover:bg-gray-700 group"
+          {/* CTAs — native store buttons, the real conversion */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
+            <Link
+              href="https://apps.apple.com/se/app/famies/id6450005701"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="press group flex items-center gap-3 px-6 py-4 rounded-2xl bg-ink-900 dark:bg-white text-white dark:text-ink-900 font-bold shadow-soft hover:shadow-pink transition-all"
             >
-              <PlayCircle size={24} className="text-primary group-hover:scale-110 transition" />
-              Se Demo
+              <Apple size={26} fill="currentColor" />
+              <span className="flex flex-col leading-none text-left">
+                <span className="text-[10px] uppercase opacity-70 tracking-wider">Ladda ner för</span>
+                <span className="text-base font-extrabold">App Store</span>
+              </span>
+            </Link>
+
+            <Link
+              href="https://play.google.com/store/apps/details?id=com.famapdirectory.apps&hl=en"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="press group flex items-center gap-3 px-6 py-4 rounded-2xl bg-white dark:bg-ink-900 border border-ink-100 dark:border-ink-700 text-ink-900 dark:text-white font-bold shadow-soft hover:shadow-mint transition-all"
+            >
+              <Play size={24} fill="currentColor" className="text-primary" />
+              <span className="flex flex-col leading-none text-left">
+                <span className="text-[10px] uppercase opacity-70 tracking-wider">Hämta på</span>
+                <span className="text-base font-extrabold">Google Play</span>
+              </span>
+            </Link>
+
+            <button
+              onClick={() => setIsVideoOpen(true)}
+              className="press group flex items-center justify-center gap-2 px-5 py-4 rounded-2xl bg-transparent text-ink-900 dark:text-white font-bold underline-offset-4 hover:underline"
+            >
+              <PlayCircle size={22} className="text-primary group-hover:scale-110 transition" />
+              Se 30-sek demo
             </button>
+          </div>
+
+          {/* Trust strip */}
+          <div className="flex flex-wrap items-center gap-6 justify-center lg:justify-start">
+            <div className="flex items-center gap-2">
+              <div className="flex -space-x-2">
+                {[0, 1, 2, 3].map((i) => (
+                  <div
+                    key={i}
+                    className="w-8 h-8 rounded-full ring-2 ring-white dark:ring-ink-900 bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-xs font-black text-white"
+                  >
+                    {['A', 'L', 'M', 'S'][i]}
+                  </div>
+                ))}
+              </div>
+              <div className="text-sm">
+                <div className="font-bold text-ink-900 dark:text-white">10 000+ familjer</div>
+                <div className="text-ink-500 dark:text-ink-300 text-xs">laddat ner redan</div>
+              </div>
+            </div>
+            <div className="h-10 w-px bg-ink-100 dark:bg-ink-700 hidden sm:block" />
+            <div className="flex items-center gap-1.5">
+              {[0, 1, 2, 3, 4].map((i) => (
+                <Star key={i} size={18} className="fill-primary text-primary" />
+              ))}
+              <span className="ml-2 text-sm font-bold text-ink-900 dark:text-white">4.8</span>
+              <span className="text-sm text-ink-500 dark:text-ink-300">/ App Store</span>
+            </div>
           </div>
         </motion.div>
 
-        {/* --- ডান পাশ: ফোন মকআপ (তোমার আগের কোড) --- */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.8 }}
+        {/* RIGHT — phone + floating cards */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="relative mx-auto"
         >
-          {/* ফোনের বাইরের ফ্রেম */}
-          <div className="relative w-[300px] h-[600px] bg-gray-900 rounded-[3.5rem] border-[12px] border-gray-900 shadow-2xl overflow-hidden mx-auto rotate-[-5deg] hover:rotate-0 transition duration-500 z-20">
-            
-            {/* ফোনের ভেতরের স্ক্রিন */}
-            <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden bg-white dark:bg-gray-800">
-              <Image 
-                src="/app-screenshot.png" // তোমার ফাইলের নাম ঠিক রেখেছি
-                alt="Famies App Screenshot"
-                fill 
-                className="object-cover"
-                priority 
-              />
-            </div>
-
-            {/* নচ */}
-            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-36 h-7 bg-gray-900 rounded-b-3xl z-30"></div>
+          {/* Aura behind phone */}
+          <div className="absolute inset-0 -z-10 flex items-center justify-center">
+            <div className="w-[420px] h-[420px] rounded-full bg-radial-pink blur-3xl opacity-80" />
           </div>
 
-          {/* ফ্লোটিং এলিমেন্ট (Translated) */}
-          <motion.div 
-            animate={{ y: [0, -20, 0] }}
-            transition={{ repeat: Infinity, duration: 4 }}
-            className="absolute top-20 -right-4 bg-white dark:bg-gray-800 p-4 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 z-40"
+          {/* Phone */}
+          <div className="relative w-[280px] sm:w-[320px] h-[580px] sm:h-[660px] mx-auto">
+            <div className="relative w-full h-full bg-ink-900 rounded-[3rem] border-[10px] border-ink-900 shadow-2xl overflow-hidden rotate-[-4deg] hover:rotate-0 transition-transform duration-700">
+              <div className="relative w-full h-full rounded-[2.2rem] overflow-hidden bg-white">
+                <Image
+                  src="/app-screenshot.png"
+                  alt="Famies app — hem-flöde med evenemang nära dig"
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="320px"
+                />
+              </div>
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-ink-900 rounded-b-3xl z-10" />
+            </div>
+          </div>
+
+          {/* Floating card 1 — top */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.6 }}
+            className="absolute top-12 -left-2 sm:-left-8 glass rounded-2xl p-3 pr-5 shadow-pink animate-float-y"
           >
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-2xl">🎉</div>
+              <div className="w-11 h-11 rounded-xl bg-primary/20 flex items-center justify-center text-2xl">
+                🎪
+              </div>
               <div>
-                <p className="font-bold text-gray-900 dark:text-white">Smarta Evenemang</p>
-                <p className="text-xs text-gray-500">Utvalt för dig</p>
+                <p className="font-bold text-sm text-ink-900 dark:text-white leading-tight">
+                  Lördag • Familjemys
+                </p>
+                <p className="text-xs text-ink-500 dark:text-ink-300 flex items-center gap-1">
+                  <MapPin size={11} /> 1,2 km från dig
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Floating card 2 — bottom */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.6 }}
+            className="absolute bottom-16 -right-2 sm:-right-10 glass rounded-2xl p-3 pr-4 shadow-mint animate-float-y-slow"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-11 h-11 rounded-xl bg-secondary/50 flex items-center justify-center">
+                <Sparkles size={20} className="text-green-700" />
+              </div>
+              <div>
+                <p className="font-bold text-sm text-ink-900 dark:text-white leading-tight">
+                  Valt åt dig
+                </p>
+                <p className="text-xs text-ink-500 dark:text-ink-300">
+                  baserat på era barn
+                </p>
               </div>
             </div>
           </motion.div>
         </motion.div>
-
       </div>
 
-      {/* --- ভিডিও পপ-আপ মোডাল (Same as before) --- */}
+      {/* Demo video modal */}
       <AnimatePresence>
         {isVideoOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-md p-4"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 backdrop-blur-md p-4"
             onClick={() => setIsVideoOpen(false)}
           >
             <motion.div
-              initial={{ scale: 0.5, opacity: 0 }}
+              initial={{ scale: 0.6, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.5, opacity: 0 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative w-full max-w-4xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl"
+              exit={{ scale: 0.6, opacity: 0 }}
+              transition={{ type: 'spring', damping: 24, stiffness: 280 }}
+              className="relative w-full max-w-4xl aspect-video bg-black rounded-3xl overflow-hidden shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               <button
                 onClick={() => setIsVideoOpen(false)}
-                className="absolute top-4 right-4 text-white hover:text-red-500 z-10 bg-black/50 hover:bg-white rounded-full p-2 transition-all duration-300"
+                className="absolute top-4 right-4 text-white hover:text-primary z-10 bg-black/60 hover:bg-white rounded-full p-2 transition"
+                aria-label="Stäng video"
               >
-                <X size={24} />
+                <X size={22} />
               </button>
-
               <iframe
                 width="100%"
                 height="100%"
@@ -137,12 +227,11 @@ export default function Hero() {
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-              ></iframe>
+              />
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-
     </section>
   );
 }

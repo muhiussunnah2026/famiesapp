@@ -1,153 +1,151 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Apple, Play, CheckCircle2 } from 'lucide-react';
+import { Apple, Play, CheckCircle2, Star } from 'lucide-react';
+import WaveDivider from './WaveDivider';
 
 export default function DownloadSection() {
   return (
-    <section id="download" className="relative w-full py-24 overflow-hidden bg-gradient-to-br from-white via-[#fff0f5] to-[#f0fff4] dark:from-gray-900 dark:via-black dark:to-gray-900 transition-colors duration-500">
-      
-      {/* --- ডাইনামিক অ্যানিমেটেড ব্যাকগ্রাউন্ড --- */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div 
-          animate={{ 
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-            x: [0, 50, 0],
-            y: [0, -50, 0]
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-20 -left-20 w-[500px] h-[500px] bg-[#FF8FAF]/30 dark:bg-[#FF8FAF]/10 rounded-full blur-[120px]"
-        />
-        <motion.div 
-          animate={{ 
-            scale: [1.2, 1, 1.2],
-            opacity: [0.3, 0.6, 0.3],
-            x: [0, -30, 0],
-            y: [0, 30, 0]
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-[#CCFAD6]/40 dark:bg-[#CCFAD6]/10 rounded-full blur-[130px]"
-        />
-      </div>
+    <>
+      <WaveDivider variant="pink-to-mint" height={100} />
+      <section
+        id="download"
+        className="relative w-full py-24 md:py-32 overflow-hidden section"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Big glass card */}
+          <motion.div
+            initial={{ opacity: 0, y: 40, scale: 0.98 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="relative rounded-[2.2rem] md:rounded-[2.8rem] overflow-hidden glass shadow-soft"
+          >
+            {/* Inner gradient wash */}
+            <div className="absolute inset-0 bg-brand-gradient-soft pointer-events-none" />
+            {/* Floating decorative blobs inside the card */}
+            <div className="absolute -top-20 -left-20 w-80 h-80 rounded-full bg-primary/25 blur-3xl pointer-events-none animate-float-y" />
+            <div className="absolute -bottom-24 -right-10 w-96 h-96 rounded-full bg-secondary/40 blur-3xl pointer-events-none animate-float-y-slow" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* হেডার টেক্সট */}
-        <div className="text-center mb-16">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-block px-5 py-2 mb-6 rounded-full bg-[#FF8FAF]/10 border border-[#FF8FAF]/20 text-[#FF8FAF] font-bold text-xs uppercase tracking-wide"
-          >
-            🚀 Finns på iOS & Android
-          </motion.div>
-          
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-6xl font-extrabold text-gray-900 dark:text-white mb-6 leading-tight"
-          >
-            Less screen time. <br/>
-            <span className="text-[#FF8FAF]">
-              More family time.
-            </span>
-          </motion.h2>
-          
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-10 font-medium"
-          >
-            Få idéer och tips som passar ert familjeliv, från familjer nära dig.
-          </motion.p>
-        </div>
+            <div className="relative grid lg:grid-cols-[1.15fr_1fr] gap-10 lg:gap-16 items-center p-8 md:p-14 lg:p-16">
+              {/* LEFT — copy + CTAs */}
+              <div className="text-center lg:text-left">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full glass shadow-soft"
+                >
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-75 animate-ping" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
+                  </span>
+                  <span className="text-xs font-bold uppercase tracking-wider text-ink-700 dark:text-white">
+                    iOS + Android • Gratis
+                  </span>
+                </motion.div>
 
-        {/* ডাউনলোড কার্ডস */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          
-          {/* iOS Card */}
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="group relative bg-white/70 dark:bg-white/5 backdrop-blur-xl border border-white/50 dark:border-white/10 rounded-[2rem] p-8 shadow-xl shadow-[#FF8FAF]/10 dark:shadow-none transition-all duration-500 hover:border-[#FF8FAF]/50 hover:scale-[1.02]"
-          >
-            <div className="flex items-start justify-between mb-8">
-              <div className="w-16 h-16 bg-gray-50 dark:bg-white rounded-2xl border border-gray-100 dark:border-transparent flex items-center justify-center text-black shadow-sm">
-                <Apple size={36} fill="currentColor" />
+                <h2 className="text-4xl md:text-6xl font-black text-ink-900 dark:text-white leading-[1.02] mb-6">
+                  Mindre skärmtid.<br />
+                  <span className="text-brand-gradient">Mer familjetid.</span>
+                </h2>
+
+                <p className="text-lg md:text-xl text-ink-500 dark:text-ink-200 mb-8 max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
+                  Ladda ner Famies. Ge era barn en bättre lördag —
+                  <span className="text-ink-900 dark:text-white font-semibold">
+                    {' '}innan ni hinner bråka om vad ni ska hitta på.
+                  </span>
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-8">
+                  <Link
+                    href="https://apps.apple.com/se/app/famies/id6450005701"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="press group flex items-center gap-3 px-6 py-4 rounded-2xl bg-ink-900 dark:bg-white text-white dark:text-ink-900 font-bold shadow-soft hover:shadow-pink transition-all"
+                  >
+                    <Apple size={28} fill="currentColor" />
+                    <span className="flex flex-col leading-none text-left">
+                      <span className="text-[10px] uppercase opacity-70 tracking-wider">Ladda ner för</span>
+                      <span className="text-base font-extrabold">App Store</span>
+                    </span>
+                  </Link>
+
+                  <Link
+                    href="https://play.google.com/store/apps/details?id=com.famapdirectory.apps&hl=en"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="press group flex items-center gap-3 px-6 py-4 rounded-2xl bg-primary text-white font-bold shadow-pink hover:shadow-glow-pink transition-all"
+                  >
+                    <Play size={26} fill="currentColor" />
+                    <span className="flex flex-col leading-none text-left">
+                      <span className="text-[10px] uppercase opacity-85 tracking-wider">Hämta på</span>
+                      <span className="text-base font-extrabold">Google Play</span>
+                    </span>
+                  </Link>
+                </div>
+
+                {/* Benefits */}
+                <div className="flex flex-wrap gap-x-6 gap-y-3 justify-center lg:justify-start text-ink-500 dark:text-ink-200 text-sm font-semibold">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 size={18} className="text-primary" />
+                    Gratis för alltid
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 size={18} className="text-primary" />
+                    Inget kreditkort
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 size={18} className="text-primary" />
+                    30 sek att komma igång
+                  </div>
+                </div>
               </div>
-              <span className="px-3 py-1 bg-[#FF8FAF]/20 text-[#FF8FAF] text-[10px] font-bold rounded-full border border-[#FF8FAF]/30 uppercase">
-                Rekommenderas
-              </span>
-            </div>
-            
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Ladda ner för iOS</h3>
-            <p className="text-gray-500 dark:text-gray-400 mb-8 text-sm">Kompatibel med iPhone, iPad & Watch.</p>
-            
-            <Link 
-              href="https://apps.apple.com/us/app/fam-map/id6450005701" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center w-full py-4 bg-[#FF8FAF] text-white font-bold rounded-xl hover:bg-[#ff7eb9] transition gap-2 shadow-lg shadow-[#FF8FAF]/30"
-            >
-              <Apple size={22} className="mb-1" fill="currentColor" />
-              App Store
-            </Link>
-          </motion.div>
 
-          {/* Android Card */}
-          <motion.div 
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="group relative bg-white/70 dark:bg-white/5 backdrop-blur-xl border border-white/50 dark:border-white/10 rounded-[2rem] p-8 shadow-xl shadow-[#CCFAD6]/20 dark:shadow-none transition-all duration-500 hover:border-[#CCFAD6]/50 hover:scale-[1.02]"
-          >
-            <div className="flex items-start justify-between mb-8">
-              <div className="w-16 h-16 bg-gray-50 dark:bg-white rounded-2xl border border-gray-100 dark:border-transparent flex items-center justify-center text-black shadow-sm">
-                <Play size={36} fill="currentColor" className="ml-1" /> 
+              {/* RIGHT — phone + rating card */}
+              <div className="relative mx-auto max-w-[320px] lg:max-w-none">
+                <div className="relative w-[260px] sm:w-[300px] h-[540px] sm:h-[620px] mx-auto rotate-[4deg] hover:rotate-0 transition-transform duration-700">
+                  <div className="relative w-full h-full bg-ink-900 rounded-[2.8rem] border-[10px] border-ink-900 shadow-2xl overflow-hidden">
+                    <div className="relative w-full h-full rounded-[2rem] overflow-hidden bg-white">
+                      <Image
+                        src="/app-screenshot.png"
+                        alt="Famies app-flöde"
+                        fill
+                        className="object-cover"
+                        sizes="300px"
+                      />
+                    </div>
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-5 bg-ink-900 rounded-b-2xl z-10" />
+                  </div>
+
+                  {/* Rating card floating */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                    className="absolute -bottom-4 -left-4 sm:-left-10 glass rounded-2xl p-4 shadow-pink animate-float-y"
+                  >
+                    <div className="flex items-center gap-1 mb-1">
+                      {[0, 1, 2, 3, 4].map((i) => (
+                        <Star key={i} size={14} className="fill-primary text-primary" />
+                      ))}
+                      <span className="ml-1.5 text-sm font-black text-ink-900 dark:text-white">
+                        4.8
+                      </span>
+                    </div>
+                    <p className="text-xs text-ink-500 dark:text-ink-200 font-medium">
+                      från 10k+ familjer
+                    </p>
+                  </motion.div>
+                </div>
               </div>
-              <span className="px-3 py-1 bg-[#CCFAD6]/40 dark:bg-[#CCFAD6]/20 text-teal-700 dark:text-[#CCFAD6] text-[10px] font-bold rounded-full border border-[#CCFAD6]/30 uppercase">
-                Senaste versionen
-              </span>
             </div>
-            
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Hämta på Android</h3>
-            <p className="text-gray-500 dark:text-gray-400 mb-8 text-sm">Stödjer Android 10 och senare enheter.</p>
-            
-            <Link 
-              href="https://play.google.com/store/apps/details?id=com.famapdirectory.apps&hl=bn" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center w-full py-4 bg-[#CCFAD6] text-teal-900 font-bold rounded-xl hover:bg-[#b0f5bf] transition gap-2 shadow-lg shadow-[#CCFAD6]/30"
-            >
-              <Play size={22} fill="currentColor" />
-              Google Play
-            </Link>
           </motion.div>
-
         </div>
-
-        {/* Benefits List (Translated) */}
-        <div className="mt-16 flex flex-wrap justify-center gap-4 md:gap-12 text-gray-600 dark:text-gray-400 text-sm font-medium">
-          <div className="flex items-center gap-2">
-            <CheckCircle2 size={18} className="text-[#FF8FAF]" />
-            <span>Gratis för alltid</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <CheckCircle2 size={18} className="text-[#FF8FAF]" />
-            <span>Inget kreditkort krävs</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <CheckCircle2 size={18} className="text-[#FF8FAF]" />
-            <span>Säker datakryptering</span>
-          </div>
-        </div>
-
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

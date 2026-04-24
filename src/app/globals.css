@@ -2,60 +2,241 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================
+   FAMIES — Brand tokens (Pink + Mint only)
+   ============================================ */
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0c0a13;
+
+  /* Brand — only these two colors */
+  --brand-pink: #FF8FAF;
+  --brand-pink-deep: #ff6f99;
+  --brand-pink-soft: #ffe1ec;
+  --brand-mint: #CCFAD6;
+  --brand-mint-deep: #a8f0ba;
+  --brand-mint-soft: #e9fdef;
+
+  /* Neutrals */
+  --ink-900: #0c0a13;
+  --ink-700: #2b2540;
+  --ink-500: #615c72;
+  --ink-300: #b4afc1;
+  --ink-100: #efecf2;
+
+  /* Surface */
+  --surface: #ffffff;
+  --surface-soft: #fdfbff;
+  --surface-glass: rgba(255, 255, 255, 0.62);
+  --surface-border: rgba(12, 10, 19, 0.08);
+
+  /* Shadows tuned to pink */
+  --shadow-pink: 0 20px 60px -20px rgba(255, 143, 175, 0.45);
+  --shadow-mint: 0 20px 60px -20px rgba(168, 240, 186, 0.55);
+  --shadow-soft: 0 12px 40px -12px rgba(12, 10, 19, 0.08);
 }
 
-/* ডার্ক মোড কালার */
 .dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  --background: #07060c;
+  --foreground: #f7f4ff;
+
+  --ink-900: #f7f4ff;
+  --ink-700: #d6cfe6;
+  --ink-500: #968fa8;
+  --ink-300: #4a4458;
+  --ink-100: #1a1625;
+
+  --surface: #0c0a13;
+  --surface-soft: #11101a;
+  --surface-glass: rgba(12, 10, 19, 0.55);
+  --surface-border: rgba(247, 244, 255, 0.08);
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease; /* স্মুথ কালার চেঞ্জ হবে */
-}
-.\[\&_p\]\:mb-6 p {
-    margin-bottom: 1rem !important;
-}
-p.amartumi {
-    font-size: 15px !important;
-}
-/* --- Custom Scrollbar for Whole Website --- */
-::-webkit-scrollbar {
-  width: 12px;
+  font-family: var(--font-satoshi), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  overflow-x: hidden;
 }
 
-::-webkit-scrollbar-track {
-  background: #fff; /* বা তোমার ডার্ক মোডের জন্য #020617 দিতে পারো */
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #fb7185; /* Soft Rose-400 */
-  border-radius: 20px;
-  border: 3px solid #fff; /* ডার্ক মোডে বর্ডার কালার #020617 দিতে পারো */
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: #f43f5e; /* Vibrant Rose-500 */
-}
-/* 🔥 Hide Scrollbar Globally but Allow Scrolling */
+/* Hide scrollbar everywhere — premium feel */
 html, body {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
-
-body::-webkit-scrollbar {
-  display: none; /* Chrome, Safari and Opera */
-  width: 0px;
+body::-webkit-scrollbar,
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
   background: transparent;
 }
 
-/* যদি কোনো নির্দিষ্ট এলিমেন্টের জন্যও বন্ধ করতে চাও */
-::-webkit-scrollbar {
-  display: none;
+/* ============================================
+   Brand gradient text + backgrounds
+   ============================================ */
+.text-brand-gradient {
+  background: linear-gradient(110deg, var(--brand-pink) 0%, var(--brand-pink-deep) 45%, var(--brand-mint-deep) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.bg-brand-gradient {
+  background: linear-gradient(135deg, var(--brand-pink) 0%, var(--brand-pink-deep) 50%, var(--brand-mint-deep) 100%);
+}
+
+.bg-brand-gradient-soft {
+  background: linear-gradient(135deg, var(--brand-pink-soft) 0%, #ffffff 50%, var(--brand-mint-soft) 100%);
+}
+
+.dark .bg-brand-gradient-soft {
+  background: linear-gradient(135deg, rgba(255, 143, 175, 0.08) 0%, #07060c 50%, rgba(204, 250, 214, 0.08) 100%);
+}
+
+/* Animated conic gradient — for buttons & badges on hover */
+.bg-brand-conic {
+  background: conic-gradient(from var(--angle, 0deg), var(--brand-pink), var(--brand-mint), var(--brand-pink));
+  animation: spin-conic 6s linear infinite;
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes spin-conic {
+  to { --angle: 360deg; }
+}
+
+/* ============================================
+   Parallax blob animations
+   ============================================ */
+@keyframes blob-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  33% { transform: translate(60px, -40px) scale(1.12) rotate(40deg); }
+  66% { transform: translate(-30px, 30px) scale(0.92) rotate(-25deg); }
+}
+@keyframes blob-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1.08) rotate(0deg); }
+  50% { transform: translate(-70px, 50px) scale(0.95) rotate(50deg); }
+}
+@keyframes blob-drift-3 {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  40% { transform: translate(40px, 70px) scale(1.18) rotate(-30deg); }
+  80% { transform: translate(-50px, -20px) scale(0.9) rotate(20deg); }
+}
+@keyframes blob-pulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 0.9; }
+}
+
+.blob-drift-1 { animation: blob-drift-1 22s ease-in-out infinite, blob-pulse 9s ease-in-out infinite; }
+.blob-drift-2 { animation: blob-drift-2 28s ease-in-out infinite, blob-pulse 11s ease-in-out infinite; }
+.blob-drift-3 { animation: blob-drift-3 25s ease-in-out infinite, blob-pulse 10s ease-in-out infinite; }
+
+/* ============================================
+   Grain / noise overlay for premium feel
+   ============================================ */
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ============================================
+   Marquee (for testimonial / trust bar)
+   ============================================ */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+.animate-marquee-slow {
+  animation: marquee 70s linear infinite;
+}
+
+/* ============================================
+   Shimmer (for glass cards on hover)
+   ============================================ */
+@keyframes shimmer {
+  0% { transform: translateX(-150%) skewX(-12deg); }
+  100% { transform: translateX(250%) skewX(-12deg); }
+}
+.group:hover .group-hover\:animate-shimmer {
+  animation: shimmer 1.4s ease-out;
+}
+
+/* ============================================
+   Floating utility
+   ============================================ */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+.animate-float-y { animation: float-y 6s ease-in-out infinite; }
+
+@keyframes float-y-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-22px); }
+}
+.animate-float-y-slow { animation: float-y-slow 9s ease-in-out infinite; }
+
+/* ============================================
+   Glass card
+   ============================================ */
+.glass {
+  background: var(--surface-glass);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid var(--surface-border);
+}
+
+/* ============================================
+   Section wrapper — keeps blobs on top of page bg
+   ============================================ */
+.section {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   Blog rich content
+   ============================================ */
+.rich-content p { margin-bottom: 1rem; color: var(--ink-700); }
+.rich-content h2 { font-size: 1.75rem; font-weight: 800; margin: 1.5rem 0 1rem; }
+.rich-content h3 { font-size: 1.35rem; font-weight: 700; margin: 1.25rem 0 0.75rem; }
+.rich-content img { border-radius: 1rem; margin: 1.25rem 0; }
+.rich-content ul, .rich-content ol { margin: 1rem 0 1rem 1.5rem; }
+
+/* ============================================
+   Button pressable
+   ============================================ */
+.press { transition: transform 180ms ease, box-shadow 240ms ease, background 180ms ease; }
+.press:active { transform: translateY(1px) scale(0.98); }
+
+/* ============================================
+   Reduce motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .blob-drift-1, .blob-drift-2, .blob-drift-3,
+  .animate-marquee, .animate-marquee-slow,
+  .animate-float-y, .animate-float-y-slow { animation: none !important; }
 }
