@@ -6,6 +6,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Download, ChevronDown, LayoutDashboard, LogOut, Menu, X } from 'lucide-react';
 import { supabase } from '@/lib/supabaseClient';
+import { LIVE } from '@/lib/siteConfig';
 import toast from 'react-hot-toast';
 
 //   { name: 'Beta', href: '/early-access' },
@@ -70,7 +71,13 @@ export default function Navbar() {
   if (!mounted) return null;
 
   if (pathname?.startsWith('/dashboard')) {
-    return null; 
+    return null;
+  }
+
+  // Coming Soon mode: hide chrome on the homepage so the landing
+  // covers the full viewport. Other routes still get the navbar.
+  if (!LIVE && pathname === '/') {
+    return null;
   }
 
   return (

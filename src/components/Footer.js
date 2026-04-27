@@ -1,8 +1,10 @@
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Instagram, Youtube, Apple, Play, Mail } from 'lucide-react';
+import { LIVE } from '@/lib/siteConfig';
 
 // সোশ্যাল মিডিয়া লিঙ্ক
 const SocialLink = ({ href, icon: Icon, color }) => (
@@ -25,7 +27,14 @@ const TiktokIcon = ({ size = 20 }) => (
 );
 
 export default function Footer() {
+  const pathname = usePathname();
   const currentYear = new Date().getFullYear();
+
+  // Coming Soon mode: hide footer on the homepage (the landing
+  // ships its own minimal footer). Other routes still get this.
+  if (!LIVE && pathname === '/') {
+    return null;
+  }
 
   // ✅ আপডেটেড লিগ্যাল লিঙ্কস (Cookie Policy -> Account Deletion Manual)
   const legalLinks = [
