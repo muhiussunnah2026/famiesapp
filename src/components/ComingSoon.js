@@ -1,10 +1,8 @@
 'use client';
 import { useState } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { ArrowRight, Loader2, CheckCircle, Mail } from 'lucide-react';
-import { supabase } from '@/lib/supabaseClient';
-import toast from 'react-hot-toast';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, Loader2, CheckCircle, Mail, Heart } from 'lucide-react';
 
 /**
  * Famies Coming Soon landing — dark, minimal, brand-pure.
@@ -16,30 +14,15 @@ export default function ComingSoon() {
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
 
+  // Simple, no-backend submission — show a warm Swedish thank-you.
   const handleSubscribe = async (e) => {
     e.preventDefault();
     if (!email || loading) return;
     setLoading(true);
-    try {
-      const { error } = await supabase
-        .from('newsletter')
-        .insert([{ email }]);
-      if (error) {
-        if (error.code === '23505') {
-          toast.success('Du står redan på beta-listan ❤');
-          setDone(true);
-          return;
-        }
-        throw error;
-      }
-      toast.success('Tack! Du står på beta-listan.');
-      setDone(true);
-      setEmail('');
-    } catch (err) {
-      toast.error(err?.message || 'Något gick fel.');
-    } finally {
-      setLoading(false);
-    }
+    // tiny delay so the loading state feels real
+    await new Promise((r) => setTimeout(r, 450));
+    setDone(true);
+    setLoading(false);
   };
 
   return (
@@ -155,51 +138,96 @@ export default function ComingSoon() {
           </p>
         </motion.div>
 
-        {/* Beta sign-up form */}
-        <motion.form
-          onSubmit={handleSubscribe}
+        {/* Beta sign-up form / thank-you state */}
+        <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.65 }}
           className="mt-7 w-full max-w-md"
         >
-          <div className="relative group">
-            <Mail
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-white/40 group-focus-within:text-[#FF8FAF] transition-colors"
-              size={18}
-            />
-            <input
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="din@epost.se"
-              disabled={done}
-              autoComplete="email"
-              className="w-full bg-white/[0.05] backdrop-blur-md ring-1 ring-white/10 focus:ring-2 focus:ring-[#FF8FAF]/40 rounded-2xl py-3.5 pl-12 pr-36 text-white placeholder:text-white/30 outline-none transition-all disabled:opacity-60"
-            />
-            <button
-              type="submit"
-              disabled={loading || done}
-              className="press absolute right-1.5 top-1.5 bottom-1.5 px-5 rounded-xl bg-[#FF8FAF] text-white font-extrabold text-sm flex items-center gap-2 shadow-[0_8px_24px_-6px_rgba(255,143,175,0.6)] hover:shadow-[0_12px_32px_-6px_rgba(255,143,175,0.8)] transition-all disabled:opacity-70 disabled:cursor-not-allowed"
-            >
-              {loading ? (
-                <Loader2 className="animate-spin" size={16} />
-              ) : done ? (
-                <>
-                  <CheckCircle size={16} /> Klart
-                </>
-              ) : (
-                <>
-                  Anmäl <ArrowRight size={15} />
-                </>
-              )}
-            </button>
-          </div>
-          <p className="mt-3 text-center text-[11px] text-white/40">
-            Ingen spam. Vi mejlar bara när det är dags att testa.
-          </p>
-        </motion.form>
+          <AnimatePresence mode="wait">
+            {!done ? (
+              <motion.form
+                key="form"
+                onSubmit={handleSubscribe}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.35 }}
+              >
+                <div className="relative group">
+                  <Mail
+                    className="absolute left-4 top-1/2 -translate-y-1/2 text-white/40 group-focus-within:text-[#FF8FAF] transition-colors"
+                    size={18}
+                  />
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="din@epost.se"
+                    autoComplete="email"
+                    className="w-full bg-white/[0.05] backdrop-blur-md ring-1 ring-white/10 focus:ring-2 focus:ring-[#FF8FAF]/40 rounded-2xl py-3.5 pl-12 pr-36 text-white placeholder:text-white/30 outline-none transition-all"
+                  />
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="press absolute right-1.5 top-1.5 bottom-1.5 px-5 rounded-xl bg-[#FF8FAF] text-white font-extrabold text-sm flex items-center gap-2 shadow-[0_8px_24px_-6px_rgba(255,143,175,0.6)] hover:shadow-[0_12px_32px_-6px_rgba(255,143,175,0.8)] transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+                  >
+                    {loading ? (
+                      <Loader2 className="animate-spin" size={16} />
+                    ) : (
+                      <>
+                        Anmäl <ArrowRight size={15} />
+                      </>
+                    )}
+                  </button>
+                </div>
+                <p className="mt-3 text-center text-[11px] text-white/40">
+                  Ingen spam. Vi mejlar bara när det är dags att testa.
+                </p>
+              </motion.form>
+            ) : (
+              <motion.div
+                key="thanks"
+                initial={{ opacity: 0, scale: 0.94 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.94 }}
+                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                className="relative rounded-2xl px-6 py-7 text-center bg-white/[0.05] backdrop-blur-md ring-1 ring-[#FF8FAF]/30 shadow-[0_20px_60px_-20px_rgba(255,143,175,0.45)] overflow-hidden"
+              >
+                {/* soft glow */}
+                <div
+                  aria-hidden
+                  className="absolute -inset-10 rounded-full pointer-events-none"
+                  style={{
+                    background:
+                      'radial-gradient(circle at 50% 30%, rgba(255,143,175,0.18), transparent 60%)',
+                  }}
+                />
+
+                <motion.div
+                  initial={{ scale: 0.4, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 0.05, type: 'spring', damping: 14, stiffness: 220 }}
+                  className="relative mx-auto mb-3 w-12 h-12 rounded-full bg-[#FF8FAF] flex items-center justify-center shadow-[0_0_28px_rgba(255,143,175,0.65)]"
+                >
+                  <CheckCircle className="text-white" size={24} strokeWidth={3} />
+                </motion.div>
+
+                <h3 className="relative text-xl sm:text-2xl font-black text-white leading-tight">
+                  Tack för din anmälan!
+                </h3>
+                <p className="relative mt-1.5 text-sm text-white/65 font-medium">
+                  Vi hör av oss så snart beta-versionen är redo.
+                </p>
+                <p className="relative mt-3 text-[11px] uppercase tracking-[0.18em] font-bold text-[#FF8FAF] flex items-center justify-center gap-1.5">
+                  <Heart size={11} className="fill-current" /> Välkommen till Famies-familjen
+                </p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
       </section>
 
       {/* BOTTOM — footer */}
