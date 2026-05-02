@@ -164,7 +164,7 @@ export default function EarlyAccess() {
           </h2>
         </motion.div>
         <h3 className="text-3xl font-bold text-gray-900 dark:text-white -mt-4 md:-mt-8 relative z-20">familjer står redan i kö</h3>
-        <p className="text-gray-500 mt-4 max-w-md mx-auto">Vi öppnar snart för din kommun – vill du vara en av dem?</p>
+        <p className="text-gray-500 mt-4 max-w-md mx-auto">Vi öppnar snart för din kommun, vill du vara en av dem?</p>
         
         <div className="mt-8">
           <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-red-100 text-red-600 text-xs font-bold uppercase tracking-wider">
@@ -183,7 +183,7 @@ export default function EarlyAccess() {
         <div className="max-w-3xl mx-auto">
           <Heart className="w-16 h-16 text-primary mx-auto mb-8 animate-pulse" />
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white leading-relaxed">
-            "Vi tror att världen behöver mer lek, skratt och gemenskap. Famies är för familjer som vill göra livet lite mer verkligt – tillsammans."
+            "Vi tror att världen behöver mer lek, skratt och gemenskap. Famies är för familjer som vill göra livet lite mer verkligt, tillsammans."
           </h2>
         </div>
       </section>

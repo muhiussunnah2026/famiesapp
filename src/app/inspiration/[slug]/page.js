@@ -88,7 +88,7 @@ export default function SingleBlogPost() {
           <div className="flex items-center gap-2 text-sm text-gray-500 mb-6 overflow-x-auto whitespace-nowrap">
             <Link href="/" className="hover:text-primary transition-colors">Hem</Link>
             <ChevronRight size={14} />
-            <Link href="/blog" className="hover:text-primary transition-colors">Blogg</Link>
+            <Link href="/inspiration" className="hover:text-primary transition-colors">Inspiration</Link>
             <ChevronRight size={14} />
             <span className="text-primary font-bold bg-primary/10 px-3 py-1 rounded-full">{post.category}</span>
           </div>
@@ -179,7 +179,7 @@ export default function SingleBlogPost() {
             </div>
             <div className="space-y-6">
               {recentPosts.map((item) => (
-                <Link href={`/blog/${item.slug}`} key={item.id} className="flex gap-4 group">
+                <Link href={`/inspiration/${item.slug}`} key={item.id} className="flex gap-4 group">
                   <div className="w-24 h-24 bg-gray-200 rounded-2xl overflow-hidden shrink-0 relative shadow-sm">
                     {item.image_url && <img src={item.image_url} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt=""/>}
                     {item.is_premium && <div className="absolute bottom-0 right-0 bg-black/70 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-tl-lg">PRO</div>}
@@ -205,7 +205,7 @@ export default function SingleBlogPost() {
             </div>
             <div className="space-y-4">
               {popularPosts.map((item, idx) => (
-                <Link href={`/blog/${item.slug}`} key={item.id} className="flex items-center justify-between group p-3 rounded-2xl hover:bg-white dark:hover:bg-gray-800 transition-all border border-transparent hover:border-gray-100 dark:hover:border-gray-700">
+                <Link href={`/inspiration/${item.slug}`} key={item.id} className="flex items-center justify-between group p-3 rounded-2xl hover:bg-white dark:hover:bg-gray-800 transition-all border border-transparent hover:border-gray-100 dark:hover:border-gray-700">
                   <div className="flex items-center gap-4">
                     <span className="text-3xl font-black text-gray-200 dark:text-gray-700 group-hover:text-primary transition-colors w-8">0{idx + 1}</span>
                     <h4 className="font-bold text-sm text-gray-800 dark:text-white line-clamp-2 w-32 group-hover:text-primary transition-colors">
@@ -229,7 +229,7 @@ export default function SingleBlogPost() {
               <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-2">You Might Also Like</h2>
               <p className="text-gray-500">More articles selected just for you.</p>
             </div>
-            <Link href="/blog" className="hidden md:flex text-sm font-bold text-white bg-black dark:bg-white dark:text-black px-6 py-3 rounded-full items-center gap-2 hover:opacity-80 transition-all shadow-lg hover:shadow-xl">
+            <Link href="/inspiration" className="hidden md:flex text-sm font-bold text-white bg-black dark:bg-white dark:text-black px-6 py-3 rounded-full items-center gap-2 hover:opacity-80 transition-all shadow-lg hover:shadow-xl">
               View All <ArrowRight size={16}/>
             </Link>
           </div>
@@ -242,7 +242,7 @@ export default function SingleBlogPost() {
                 className="bg-white dark:bg-gray-900 rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all border border-gray-100 dark:border-gray-800 h-full group"
               >
                 {/* ✅ FIX 1: পুরো কার্ডকে ক্লিকেবল করা হয়েছে */}
-                <Link href={`/blog/${item.slug}`} className="flex flex-col h-full w-full cursor-pointer">
+                <Link href={`/inspiration/${item.slug}`} className="flex flex-col h-full w-full cursor-pointer">
                   
                   {/* Image Part */}
                   <div className="h-56 overflow-hidden relative">
@@ -281,7 +281,7 @@ export default function SingleBlogPost() {
           </div>
           
           <div className="mt-10 md:hidden text-center">
-             <Link href="/blog" className="inline-flex text-sm font-bold text-white bg-black px-8 py-3 rounded-full items-center gap-2 shadow-lg">
+             <Link href="/inspiration" className="inline-flex text-sm font-bold text-white bg-black px-8 py-3 rounded-full items-center gap-2 shadow-lg">
               View All Articles <ArrowRight size={16}/>
             </Link>
           </div>

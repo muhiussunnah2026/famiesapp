@@ -56,26 +56,26 @@ export default function Footer() {
           {/* ১. ব্র্যান্ড ইনফো ও লোগো */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-6">
-              <div className="relative w-11 h-11 rounded-2xl overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/50 p-1.5 ring-1 ring-white/60 dark:ring-white/10 shadow-soft">
+              <div className="relative w-11 h-11 rounded-2xl overflow-hidden shadow-soft">
                 <Image
-                  src="/logo.png"
-                  alt="Famies Logo"
+                  src="/logo-black.webp"
+                  alt="Famies logo"
                   width={44}
                   height={44}
-                  className="object-contain w-full h-full"
+                  className="object-cover w-full h-full"
                 />
               </div>
               <span className="text-2xl font-black text-ink-900 dark:text-white tracking-tight">Famies</span>
             </Link>
             <p className="text-ink-500 dark:text-ink-300 text-sm leading-relaxed mb-6">
-              Byggd av föräldrar, för föräldrar. Få utvalda evenemang, tips och idéer — nära dig. Mindre skärmtid, mer familjetid.
+              Byggd av föräldrar, för föräldrar. Få utvalda evenemang, tips och idéer, nära dig. Mindre skärmtid, mer familjetid.
             </p>
             
             {/* সোশ্যাল আইকন */}
             <div className="flex items-center gap-3">
               <SocialLink href="#" icon={Instagram} color="hover:text-pink-600 hover:shadow-pink-500/30" />
               <SocialLink href="#" icon={TiktokIcon} color="hover:text-black dark:hover:text-white hover:shadow-gray-500/30" />
-              <SocialLink href="#" icon={Youtube} color="hover:text-red-600 hover:shadow-red-500/30" />
+              <SocialLink href="https://www.youtube.com/@TheFamies" icon={Youtube} color="hover:text-red-600 hover:shadow-red-500/30" />
             </div>
           </div>
 
@@ -88,7 +88,8 @@ export default function Footer() {
                 { name: 'Så funkar det', href: '/#how' },
                 { name: 'Funktioner', href: '/#features' },
                 { name: 'Recensioner', href: '/#reviews' },
-                { name: 'Blogg', href: '/blog' },
+                { name: 'Inspiration', href: '/inspiration' },
+                { name: 'Skapa event', href: '/skapa-event' },
               ].map((item) => (
                 <li key={item.name}>
                   <Link href={item.href} className="text-ink-500 dark:text-ink-300 hover:text-primary transition-colors text-sm">
@@ -123,12 +124,12 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-ink-900 dark:text-white mb-6">Hämta appen</h4>
             <p className="text-ink-500 dark:text-ink-300 text-sm mb-4">
-              Öppna Famies på din mobil — gratis, alltid.
+              Öppna Famies på din mobil, gratis, alltid.
             </p>
             <div className="flex flex-col gap-3">
               
               {/* iOS Button */}
-              <a href="https://apps.apple.com/us/app/fam-map/id6450005701" target="_blank" rel="noreferrer" 
+              <a href="https://apps.apple.com/se/app/famies/id6450005701" target="_blank" rel="noreferrer"
                 className="flex items-center gap-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700 px-4 py-3 rounded-xl hover:border-gray-400 dark:hover:border-gray-500 transition shadow-sm hover:shadow-md group">
                 <Apple size={24} className="text-gray-900 dark:text-white group-hover:scale-110 transition-transform" />
                 <div className="flex flex-col leading-none">
@@ -138,7 +139,7 @@ export default function Footer() {
               </a>
 
               {/* Android Button */}
-              <a href="https://play.google.com/store/apps/details?id=com.famapdirectory.apps&hl=bn" target="_blank" rel="noreferrer" 
+              <a href="https://play.google.com/store/apps/details?id=com.famapdirectory.apps&hl=en" target="_blank" rel="noreferrer"
                 className="flex items-center gap-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700 px-4 py-3 rounded-xl hover:border-gray-400 dark:hover:border-gray-500 transition shadow-sm hover:shadow-md group">
                 <Play size={22} className="ml-0.5 text-gray-900 dark:text-white group-hover:scale-110 transition-transform" />
                 <div className="flex flex-col leading-none">

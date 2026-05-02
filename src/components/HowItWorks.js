@@ -7,7 +7,7 @@ const steps = [
     n: '01',
     icon: Download,
     title: 'Ladda ner appen',
-    body: 'Gratis på iOS och Android. Öppna — inget konto behövs för att börja titta.',
+    body: 'Gratis på iOS och Android. Öppna, inget konto behövs för att börja titta.',
     tint: 'pink',
   },
   {
@@ -20,7 +20,7 @@ const steps = [
   {
     n: '03',
     icon: Sparkles,
-    title: 'Få idéer — varje dag',
+    title: 'Få idéer varje dag',
     body: 'Utvalt flöde med evenemang, tips och platser som faktiskt passar er familj. Nära dig.',
     tint: 'pink',
   },
@@ -62,7 +62,7 @@ export default function HowItWorks() {
           </motion.p>
         </div>
 
-        {/* Steps — connected with dashed line on desktop */}
+        {/* Steps, connected with dashed line on desktop */}
         <div className="relative grid md:grid-cols-3 gap-6 md:gap-5">
           {/* Connector line behind cards */}
           <div className="hidden md:block absolute top-14 left-[16%] right-[16%] h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />

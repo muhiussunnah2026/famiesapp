@@ -1,31 +1,31 @@
 'use client';
 import { motion } from 'framer-motion';
-import { Search, Calendar, Frown, Smartphone } from 'lucide-react';
+import { Lightbulb, Calendar, MessageCircle, Users } from 'lucide-react';
 import WaveDivider from './WaveDivider';
 
 const pains = [
   {
-    quote: '"Det är lördag morgon — och vi har ingen aning."',
-    body: 'Barnen är uttråkade. Du har googlat i 20 minuter. Ingenting känns rätt.',
-    icon: Frown,
+    quote: 'Tipsen från andra familjer i närheten',
+    body: 'Platser och idéer från familjer som är som din.',
+    icon: Lightbulb,
     accent: 'pink',
   },
   {
-    quote: '"Kalendern är full av sånt som inte passar oss."',
-    body: 'Generella event-sajter visar allt — men inte det som faktiskt funkar för era åldrar.',
+    quote: 'Eventet som händer runt hörnet',
+    body: 'Aktiviteter nära er, anpassat efter barnens ålder.',
     icon: Calendar,
     accent: 'mint',
   },
   {
-    quote: '"Jag har scrollat i 40 min och hittat inget."',
-    body: 'För mycket brus. För få konkreta förslag. För lite tid.',
-    icon: Search,
+    quote: 'Svaret från någon som redan vet',
+    body: 'Fråga, få svar från andra föräldrar i närheten.',
+    icon: MessageCircle,
     accent: 'pink',
   },
   {
-    quote: '"Vi pratar om skärmtid — fast vi sitter i den själva."',
-    body: 'Du vill göra saker tillsammans. Inte leta efter dem.',
-    icon: Smartphone,
+    quote: 'Familjerna i samma situation',
+    body: 'Skapa eller hitta gruppen med samma vardag och intressen som du.',
+    icon: Users,
     accent: 'mint',
   },
 ];
@@ -43,9 +43,13 @@ export default function PainPoints() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="inline-block px-4 py-1.5 mb-5 rounded-full glass shadow-soft text-xs font-bold uppercase tracking-wider text-primary"
+              className="inline-flex items-center gap-2 px-4 py-1.5 mb-5 rounded-full glass shadow-soft text-xs font-bold uppercase tracking-wider text-primary"
             >
-              Du är inte ensam
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-75 animate-ping" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
+              </span>
+              Lansering pågår · Stockholm 2026
             </motion.div>
 
             <motion.h2
@@ -55,7 +59,7 @@ export default function PainPoints() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-4xl md:text-6xl font-black text-ink-900 dark:text-white leading-[1.05] mb-6"
             >
-              Känns det här <span className="text-brand-gradient">igen?</span>
+              Missa <span className="text-brand-gradient">inte.</span>
             </motion.h2>
 
             <motion.p
@@ -65,7 +69,7 @@ export default function PainPoints() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg md:text-xl text-ink-500 dark:text-ink-300 font-medium"
             >
-              Varje familj vi pratat med har sagt samma sak. Det är därför Famies finns.
+              Lokala tips, event och svar. På ett ställe.
             </motion.p>
           </div>
 

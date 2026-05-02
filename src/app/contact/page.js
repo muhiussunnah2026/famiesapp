@@ -96,7 +96,7 @@ export default function Contact() {
 
             <p className="text-lg md:text-xl text-ink-500 dark:text-ink-300 leading-relaxed max-w-lg font-medium">
               Fråga, ge feedback, eller tipsa oss om ett evenemang. Vi läser
-              varje meddelande själva — och svarar inom <span className="text-ink-900 dark:text-white font-bold">24 timmar</span>.
+              varje meddelande själva, och svarar inom <span className="text-ink-900 dark:text-white font-bold">24 timmar</span>.
             </p>
           </div>
 
@@ -112,13 +112,13 @@ export default function Contact() {
             <InfoCard
               icon={Clock}
               title="Svarstid"
-              body="Inom 24 timmar — vardagar snabbare."
+              body="Inom 24 timmar, vardagar snabbare."
               tint="mint"
             />
             <InfoCard
               icon={Sparkles}
               title="Förslag & önskemål"
-              body="Saknar du något? Säg till — vi bygger gärna det ni behöver."
+              body="Saknar du något? Säg till, vi bygger gärna det ni behöver."
               tint="pink"
             />
             <InfoCard
@@ -130,7 +130,7 @@ export default function Contact() {
           </div>
         </motion.div>
 
-        {/* RIGHT — form */}
+        {/* RIGHT, form */}
         <motion.div
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
@@ -224,7 +224,7 @@ export default function Contact() {
                   Meddelande skickat
                 </h2>
                 <p className="text-ink-500 dark:text-ink-300 text-lg mb-8 max-w-md mx-auto">
-                  Tack för att du hörde av dig. Vi svarar inom 24 timmar —
+                  Tack för att du hörde av dig. Vi svarar inom 24 timmar,
                   oftast fortare.
                 </p>
                 <button

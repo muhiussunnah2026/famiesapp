@@ -12,7 +12,8 @@ import toast from 'react-hot-toast';
 //   { name: 'Beta', href: '/early-access' },
 const navLinks = [
   { name: 'Hem', href: '/' },
-  { name: 'Blogg', href: '/blog' },
+  { name: 'Inspiration', href: '/inspiration' },
+  { name: 'Skapa event', href: '/skapa-event' },
   { name: 'Kontakt', href: '/contact' },
 ];
 
@@ -96,14 +97,14 @@ export default function Navbar() {
             <Link href="/" className="flex items-center gap-3 group">
               
               {/* Logo Box: Scroll করলে Black হবে */}
-              <div className="relative w-11 h-11 md:w-12 md:h-12 rounded-2xl overflow-hidden flex items-center justify-center bg-gradient-to-br from-primary/20 to-secondary/50 p-1.5 ring-1 ring-white/60 dark:ring-white/10 shadow-soft transition-all duration-300">
-                 <Image 
-                   src="/logo.png" 
-                   alt="Famies Logo" 
-                   width={48} 
-                   height={48} 
-                   className="object-contain w-full h-full"
-                 />
+              <div className="relative w-11 h-11 md:w-12 md:h-12 rounded-2xl overflow-hidden flex items-center justify-center shadow-soft transition-all duration-300">
+                <Image
+                  src="/logo-black.webp"
+                  alt="Famies logo"
+                  width={48}
+                  height={48}
+                  className="object-cover w-full h-full"
+                />
               </div>
 
               {/* Text: Size ছোট করা হয়েছে (text-2xl) */}

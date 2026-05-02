@@ -12,7 +12,7 @@ export default function Hero() {
     <section className="relative w-full min-h-[92vh] flex items-center justify-center overflow-hidden pt-32 pb-20 section">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-16 items-center relative z-10 w-full">
 
-        {/* LEFT — copy */}
+        {/* LEFT, copy */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -35,25 +35,24 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          {/* Headline — pain-point first */}
-          <h1 className="text-[2.6rem] sm:text-5xl lg:text-[4.25rem] leading-[1.02] font-black tracking-tight text-ink-900 dark:text-white mb-6">
-            <span className="block">"Vad ska vi</span>
+          {/* Headline, curiosity-driven question */}
+          <h1 className="text-[2.4rem] sm:text-[3.25rem] lg:text-[4rem] leading-[1.05] font-black tracking-tight text-ink-900 dark:text-white mb-6">
+            <span className="block">Vill du veta vad</span>
             <span className="block">
-              göra <span className="text-brand-gradient">idag?"</span>
+              familjer <span className="text-brand-gradient">nära dig</span>
             </span>
-            <span className="block text-ink-700 dark:text-ink-100 text-[1.8rem] sm:text-3xl lg:text-[2.5rem] mt-3 font-extrabold">
-              Aldrig mer den frågan.
-            </span>
+            <span className="block">hittar på?</span>
           </h1>
 
-          {/* Pain → promise */}
+          {/* Subtitle, what + by whom */}
           <p className="text-lg md:text-xl text-ink-500 dark:text-ink-300 mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
-            Slipp googla, scrolla och fastna i idétorka.
-            Famies visar vad andra familjer redan gör —
-            <span className="text-ink-900 dark:text-white font-semibold"> nära dig, just idag</span>.
+            <span className="block text-ink-900 dark:text-white font-semibold">
+              Aktiviteter, event och skoj. Tillsammans.
+            </span>
+            Delat av familjer i närheten.
           </p>
 
-          {/* CTAs — native store buttons, the real conversion */}
+          {/* CTAs, native store buttons, the real conversion */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
             <Link
               href="https://apps.apple.com/se/app/famies/id6450005701"
@@ -119,7 +118,7 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* RIGHT — phone + floating cards */}
+        {/* RIGHT, phone + floating cards */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -137,7 +136,7 @@ export default function Hero() {
               <div className="relative w-full h-full rounded-[2.2rem] overflow-hidden bg-white">
                 <Image
                   src="/app-screenshot.png"
-                  alt="Famies app — hem-flöde med evenemang nära dig"
+                  alt="Famies app, hem-flöde med evenemang nära dig"
                   fill
                   className="object-cover"
                   priority
@@ -148,7 +147,7 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Floating card 1 — top */}
+          {/* Floating card 1, top */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -170,7 +169,7 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Floating card 2 — bottom */}
+          {/* Floating card 2, bottom */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -222,7 +221,7 @@ export default function Hero() {
               <iframe
                 width="100%"
                 height="100%"
-                src="https://www.youtube.com/embed/MEOn5GX_-hU?autoplay=1"
+                src="https://www.youtube.com/embed/p7zK0D5D1uM?autoplay=1"
                 title="Famies Demo Video"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

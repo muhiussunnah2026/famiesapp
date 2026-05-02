@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Loader2, CheckCircle, Mail, Heart } from 'lucide-react';
 
 /**
- * Famies Coming Soon landing — dark, minimal, brand-pure.
+ * Famies Coming Soon landing, dark, minimal, brand-pure.
  * Matches the client mock: logo + bold message + launch date +
  * beta sign-up. Pink (#FF8FAF) + Mint (#CCFAD6) accents only.
  */
@@ -14,7 +14,7 @@ export default function ComingSoon() {
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
 
-  // Simple, no-backend submission — show a warm Swedish thank-you.
+  // Simple, no-backend submission, show a warm Swedish thank-you.
   const handleSubscribe = async (e) => {
     e.preventDefault();
     if (!email || loading) return;
@@ -70,19 +70,19 @@ export default function ComingSoon() {
         }}
       />
 
-      {/* TOP — logo */}
+      {/* TOP, logo */}
       <motion.header
         initial={{ opacity: 0, y: -16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         className="relative z-10 pt-8 sm:pt-10 flex flex-col items-center"
       >
-        <div className="relative w-14 h-14 sm:w-16 sm:h-16 mb-3 animate-float-y-slow">
+        <div className="relative w-14 h-14 sm:w-16 sm:h-16 mb-3 rounded-2xl overflow-hidden ring-1 ring-white/15 animate-float-y-slow shadow-[0_8px_28px_rgba(255,143,175,0.35)]">
           <Image
-            src="/logo.png"
+            src="/logo-black.webp"
             alt="Famies logotyp"
             fill
-            className="object-contain drop-shadow-[0_8px_24px_rgba(255,143,175,0.35)]"
+            className="object-cover"
             priority
           />
         </div>
@@ -91,7 +91,7 @@ export default function ComingSoon() {
         </span>
       </motion.header>
 
-      {/* CENTER — headline + form */}
+      {/* CENTER, headline + form */}
       <section className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 max-w-2xl mx-auto w-full">
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
@@ -230,7 +230,7 @@ export default function ComingSoon() {
         </motion.div>
       </section>
 
-      {/* BOTTOM — footer */}
+      {/* BOTTOM, footer */}
       <motion.footer
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

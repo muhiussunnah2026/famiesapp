@@ -44,32 +44,32 @@ const satoshi = localFont({
 export const metadata = {
   metadataBase: new URL('https://www.famies.app'),
   title: {
-    default: 'Famies — "Vad ska vi göra idag?" Aldrig mer den frågan.',
+    default: 'Famies — Familjeaktiviteter nära dig',
     template: '%s · Famies',
   },
   description:
-    'Famies visar tips, evenemang och familjeaktiviteter nära dig — smart utvalda så ni slipper googla. Byggd av föräldrar, för föräldrar. 10 000+ familjer använder Famies.',
+    'Famies visar tips, evenemang och familjeaktiviteter nära dig, smart utvalda så ni slipper googla. Byggd av föräldrar, för föräldrar. 10 000+ familjer använder Famies.',
   keywords: [
     'familjeapp', 'aktiviteter för barn', 'familjeevenemang Stockholm',
     'vad göra med barn', 'utflykter barn', 'familjeliv', 'föräldra-app', 'Famies',
   ],
-  icons: { icon: '/logo.png', apple: '/logo.png' },
+  icons: { icon: '/logo-black.webp', apple: '/logo-black.webp' },
   openGraph: {
-    title: 'Famies — Aldrig mer "vad ska vi göra idag?"',
+    title: 'Famies — Familjeaktiviteter nära dig',
     description:
-      'Utvalda tips, evenemang och familjeaktiviteter — nära dig. 10 000+ föräldrar använder redan Famies.',
+      'Utvalda tips, evenemang och familjeaktiviteter nära dig. 10 000+ föräldrar använder redan Famies.',
     url: 'https://www.famies.app',
     siteName: 'Famies',
     locale: 'sv_SE',
     type: 'website',
-    images: [{ url: '/logo.png', width: 512, height: 512, alt: 'Famies' }],
+    images: [{ url: '/logo-black.webp', width: 512, height: 512, alt: 'Famies' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Famies — Aldrig mer "vad ska vi göra idag?"',
+    title: 'Famies — Familjeaktiviteter nära dig',
     description:
       'Utvalda tips och evenemang för familjer, nära dig. 10 000+ föräldrar använder Famies.',
-    images: ['/logo.png'],
+    images: ['/logo-black.webp'],
   },
 };
 

@@ -50,7 +50,7 @@ export default function BackgroundBlobs() {
           rgba(204, 250, 214, ${0.08 + (1 - mix) * 0.05}) 100%)`,
       }}
     >
-      {/* Blob 1 — pink, top-left */}
+      {/* Blob 1, pink, top-left */}
       <div
         className="absolute blob-drift-1"
         style={{
@@ -66,7 +66,7 @@ export default function BackgroundBlobs() {
         }}
       />
 
-      {/* Blob 2 — mint, mid-right */}
+      {/* Blob 2, mint, mid-right */}
       <div
         className="absolute blob-drift-2"
         style={{
@@ -82,7 +82,7 @@ export default function BackgroundBlobs() {
         }}
       />
 
-      {/* Blob 3 — pink, bottom-left (stronger) */}
+      {/* Blob 3, pink, bottom-left (stronger) */}
       <div
         className="absolute blob-drift-3"
         style={{

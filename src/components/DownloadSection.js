@@ -29,7 +29,7 @@ export default function DownloadSection() {
             <div className="absolute -bottom-24 -right-10 w-96 h-96 rounded-full bg-secondary/40 blur-3xl pointer-events-none animate-float-y-slow" />
 
             <div className="relative grid lg:grid-cols-[1.15fr_1fr] gap-10 lg:gap-16 items-center p-8 md:p-14 lg:p-16">
-              {/* LEFT — copy + CTAs */}
+              {/* LEFT, copy + CTAs */}
               <div className="text-center lg:text-left">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -53,7 +53,7 @@ export default function DownloadSection() {
                 </h2>
 
                 <p className="text-lg md:text-xl text-ink-500 dark:text-ink-200 mb-8 max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
-                  Ladda ner Famies. Ge era barn en bättre lördag —
+                  Ladda ner Famies. Ge era barn en bättre lördag,
                   <span className="text-ink-900 dark:text-white font-semibold">
                     {' '}innan ni hinner bråka om vad ni ska hitta på.
                   </span>
@@ -104,7 +104,7 @@ export default function DownloadSection() {
                 </div>
               </div>
 
-              {/* RIGHT — phone + rating card */}
+              {/* RIGHT, phone + rating card */}
               <div className="relative mx-auto max-w-[320px] lg:max-w-none">
                 <div className="relative w-[260px] sm:w-[300px] h-[540px] sm:h-[620px] mx-auto rotate-[4deg] hover:rotate-0 transition-transform duration-700">
                   <div className="relative w-full h-full bg-ink-900 rounded-[2.8rem] border-[10px] border-ink-900 shadow-2xl overflow-hidden">

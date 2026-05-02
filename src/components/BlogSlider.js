@@ -90,7 +90,7 @@ export default function BlogSlider() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-primary font-bold tracking-wider uppercase text-sm mb-2 block">Vår Blogg</span>
+            <span className="text-primary font-bold tracking-wider uppercase text-sm mb-2 block">Inspiration</span>
             <h2 className="text-4xl md:text-5xl font-black text-ink-900 dark:text-white leading-tight">
               Senaste <span className="text-brand-gradient">artiklar</span> & tips.
             </h2>
@@ -152,7 +152,7 @@ export default function BlogSlider() {
                     </div>
 
                     <h3 className="text-xl font-extrabold text-gray-900 dark:text-white mb-3 line-clamp-2 group-hover:text-primary transition-colors leading-tight">
-                      <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                      <Link href={`/inspiration/${post.slug}`}>{post.title}</Link>
                     </h3>
                     
                     {/* ✅ FIX: 200 Characters Limit + line-clamp-2 ensures roughly 2 lines */}
@@ -162,7 +162,7 @@ export default function BlogSlider() {
                     />
 
                     {/* ✅ FIX: Button Text Swedish */}
-                    <Link href={`/blog/${post.slug}`} className="inline-flex items-center gap-2 text-sm font-bold text-gray-900 dark:text-white group-hover:text-primary transition-all group-hover:gap-3 mt-auto">
+                    <Link href={`/inspiration/${post.slug}`} className="inline-flex items-center gap-2 text-sm font-bold text-gray-900 dark:text-white group-hover:text-primary transition-all group-hover:gap-3 mt-auto">
                       Läs mer <ArrowRight size={16} />
                     </Link>
                   </div>
@@ -174,7 +174,7 @@ export default function BlogSlider() {
 
         {/* --- View All Button --- */}
         <div className="mt-14 text-center">
-          <Link href="/blog">
+          <Link href="/inspiration">
             <motion.button
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}

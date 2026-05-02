@@ -159,7 +159,7 @@ export default function BlogPage() {
           </h1>
 
           <p className="text-lg md:text-xl text-ink-500 dark:text-ink-300 font-medium max-w-2xl mx-auto">
-            Riktiga tips från riktiga familjer. Plocka upp något nytt att göra —
+            Riktiga tips från riktiga familjer. Plocka upp något nytt att göra,
             eller något nytt att tänka på.
           </p>
         </motion.div>
@@ -360,7 +360,7 @@ export default function BlogPage() {
 
 /* ───────── FEATURED CARD (full width, 2 columns on md+) ───────── */
 function FeaturedCard({ article, readTime }) {
-  const href = `/blog/${article.slug}`;
+  const href = `/inspiration/${article.slug}`;
   const date = article.created_at
     ? new Date(article.created_at).toLocaleDateString('sv-SE', {
         day: 'numeric',
@@ -453,7 +453,7 @@ function FeaturedCard({ article, readTime }) {
 
 /* ───────── GRID ARTICLE CARD ───────── */
 function ArticleCard({ article, readTime }) {
-  const href = `/blog/${article.slug}`;
+  const href = `/inspiration/${article.slug}`;
   const date = article.created_at
     ? new Date(article.created_at).toLocaleDateString('sv-SE', {
         day: 'numeric',
@@ -548,7 +548,7 @@ function EmptyState({ hasFilters }) {
       <p className="text-ink-500 dark:text-ink-300 max-w-md leading-relaxed">
         {hasFilters
           ? 'Prova en annan kategori, sökterm eller rensa filtren.'
-          : 'Våra redaktörer skriver nytt innehåll varje vecka — titta in snart igen.'}
+          : 'Våra redaktörer skriver nytt innehåll varje vecka, titta in snart igen.'}
       </p>
     </div>
   );

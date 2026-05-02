@@ -18,7 +18,7 @@ const features = [
     eyebrow: 'Slipp söka',
     title: 'Tips från familjer som är som din.',
     description:
-      'Upptäck platser, aktiviteter och upplevelser som andra familjer redan testat — smart utvalda så du slipper googla.',
+      'Upptäck platser, aktiviteter och upplevelser som andra familjer redan testat, smart utvalda så du slipper googla.',
     icon: Compass,
     tint: 'pink',
     image: '/feature1.png',
@@ -28,7 +28,7 @@ const features = [
     eyebrow: 'Nära dig',
     title: 'Famies följer med dit du är.',
     description:
-      'Se vad som finns där ni bor — eller där ni råkar vara. Allt lokalt, inget filler.',
+      'Se vad som finns där ni bor, eller där ni råkar vara. Allt lokalt, inget filler.',
     icon: MapPin,
     tint: 'mint',
     image: '/feature2.png',
@@ -48,7 +48,7 @@ const features = [
     eyebrow: 'Vardag + helg',
     title: 'Byggt för hela familjelivet.',
     description:
-      'Från småbarnsåren till tonåren — flödet följer med och ändras när era behov ändras.',
+      'Från småbarnsåren till tonåren, flödet följer med och ändras när era behov ändras.',
     icon: Calendar,
     tint: 'mint',
     image: '/feature4.png',
@@ -58,7 +58,7 @@ const features = [
     eyebrow: 'Alltid något nytt',
     title: 'Nya tips varje vecka.',
     description:
-      'Färska evenemang och idéer från 270+ källor, uppdaterat för ditt område. Du öppnar — det är redan där.',
+      'Färska evenemang och idéer från 270+ källor, uppdaterat för ditt område. Du öppnar, det är redan där.',
     icon: Heart,
     tint: 'pink',
     image: '/feature5.png',
@@ -90,7 +90,7 @@ export default function Features() {
 
           {/* Sticky phone + scrolling copy */}
           <div className="flex flex-col lg:flex-row items-start relative gap-10">
-            {/* LEFT — sticky phone */}
+            {/* LEFT, sticky phone */}
             <div className="hidden lg:flex w-full lg:w-1/2 sticky top-28 h-[80vh] items-center justify-center gap-10">
               <div className="relative w-[320px] h-[650px]">
                 {/* Aura */}
@@ -146,7 +146,7 @@ export default function Features() {
               </div>
             </div>
 
-            {/* RIGHT — cards */}
+            {/* RIGHT, cards */}
             <div className="w-full lg:w-1/2 flex flex-col pt-4 lg:pt-0 pl-0 lg:pl-10">
               {features.map((feature, index) => (
                 <FeatureItem

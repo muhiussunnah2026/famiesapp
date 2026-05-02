@@ -22,7 +22,7 @@ const testimonials = [
     role: 'pappa till två',
     city: 'Solna',
     quote:
-      'Det är som att ha en kompis som alltid vet vad som händer. Sparar oss så mycket tid — och vi upptäcker saker precis runt hörnet som vi aldrig sett.',
+      'Det är som att ha en kompis som alltid vet vad som händer. Sparar oss så mycket tid, och vi upptäcker saker precis runt hörnet som vi aldrig sett.',
   },
   {
     name: 'Linnea, 29',
@@ -36,7 +36,7 @@ const testimonials = [
     role: 'familj med 4 barn',
     city: 'Upplands Väsby',
     quote:
-      'Vi har testat allt — kalendrar, listor, grupper på Facebook. Famies är det första som faktiskt känns gjort för föräldrar.',
+      'Vi har testat allt: kalendrar, listor, grupper på Facebook. Famies är det första som faktiskt känns gjort för föräldrar.',
   },
   {
     name: 'Johan, 37',

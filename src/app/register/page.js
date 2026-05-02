@@ -128,7 +128,7 @@ export default function Register() {
   return (
     <div className="min-h-screen w-full flex items-center justify-center relative px-4 py-24 md:py-28 overflow-hidden section">
       <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-8 lg:gap-12 z-10 relative items-center">
-        {/* LEFT — form */}
+        {/* LEFT, form */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
@@ -285,7 +285,7 @@ export default function Register() {
           </div>
         </motion.div>
 
-        {/* RIGHT — visual panel */}
+        {/* RIGHT, visual panel */}
         <motion.div
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
@@ -303,12 +303,12 @@ export default function Register() {
                 <Sparkles size={12} /> Kom igång gratis
               </div>
 
-              <div className="relative w-20 h-20 mb-5">
+              <div className="relative w-20 h-20 mb-5 rounded-2xl overflow-hidden ring-1 ring-black/10 shadow-pink">
                 <Image
-                  src="/logo.png"
+                  src="/logo-black.webp"
                   alt="Famies"
                   fill
-                  className="object-contain drop-shadow-lg"
+                  className="object-cover"
                 />
               </div>
 

@@ -48,7 +48,7 @@ export default function Login() {
   return (
     <div className="min-h-screen w-full flex items-center justify-center overflow-hidden relative py-24 px-4 section">
       <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-8 lg:gap-12 z-10 relative items-center">
-        {/* LEFT — welcome panel (hidden on mobile) */}
+        {/* LEFT, welcome panel (hidden on mobile) */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
@@ -73,18 +73,18 @@ export default function Login() {
               </h2>
 
               <p className="text-lg text-ink-500 dark:text-ink-200 leading-relaxed mb-8">
-                Fortsätt där du slutade — nya evenemang, sparade tips och
+                Fortsätt där du slutade, nya evenemang, sparade tips och
                 familjeidéer nära dig.
               </p>
 
               {/* Float logo */}
               <div className="relative w-full h-56 glass rounded-3xl flex items-center justify-center shadow-soft">
-                <div className="relative w-28 h-28 animate-float-y">
+                <div className="relative w-28 h-28 rounded-3xl overflow-hidden ring-1 ring-black/10 animate-float-y shadow-pink">
                   <Image
-                    src="/logo.png"
+                    src="/logo-black.webp"
                     fill
-                    className="object-contain"
-                    alt="Famies Logo"
+                    className="object-cover"
+                    alt="Famies logo"
                   />
                 </div>
 
@@ -101,7 +101,7 @@ export default function Login() {
           </div>
         </motion.div>
 
-        {/* RIGHT — form */}
+        {/* RIGHT, form */}
         <motion.div
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}

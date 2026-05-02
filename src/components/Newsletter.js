@@ -75,7 +75,7 @@ export default function Newsletter() {
               </h2>
 
               <p className="text-lg text-ink-500 dark:text-ink-200 leading-relaxed">
-                Gör som över 10 000 föräldrar — få våra utvalda evenemang och veckans bästa tips direkt i inkorgen.
+                Gör som över 10 000 föräldrar, få våra utvalda evenemang och veckans bästa tips direkt i inkorgen.
               </p>
             </div>
 
