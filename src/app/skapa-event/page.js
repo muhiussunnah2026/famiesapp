@@ -166,25 +166,38 @@ export default function SkapaEvent() {
             <InfoCard
               icon={Sparkles}
               title="Vad funkar bra"
-              body="Familjeevent, öppet hus, marknader, museumdagar, lekparker, naturupplevelser."
+              body="Tillfälliga event. Ex: familjedag, öppet hus, marknader, prova-på-dagar. Sånt som händer just nu eller snart, som du vill informera familjer om."
               tint="pink"
             />
             <InfoCard
               icon={Users}
               title="Vem kan tipsa"
-              body="Föräldrar, arrangörer, kommuner, föreningar, alla som vill dela med sig."
+              body="Arrangörer, föreningar, kommuner och privatpersoner med koll på vad som händer i området."
               tint="mint"
             />
             <InfoCard
               icon={Heart}
-              title="Helt gratis"
-              body="Kostar ingenting för enskilda evenemang. Bara att tipsa."
+              title="Kostar det något?"
+              body={
+                <>
+                  Gratis för föreningar, kommuner, kulturskolor och familjer
+                  som vill tipsa. Kommersiella aktörer hör av sig för
+                  partnerskap till{' '}
+                  <a
+                    href="mailto:partner@famies.app"
+                    className="text-primary font-semibold underline-offset-2 hover:underline"
+                  >
+                    partner@famies.app
+                  </a>
+                  .
+                </>
+              }
               tint="pink"
             />
             <InfoCard
               icon={Check}
               title="Granskas inom 24h"
-              body="Vi tittar manuellt och publicerar rätt event direkt i appen."
+              body="Vi tittar igenom ditt event manuellt och publicerar det direkt när det är godkänt."
               tint="mint"
             />
           </div>
