@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   User,
   Sparkles,
@@ -16,6 +16,11 @@ import {
   Heart,
   Users,
   Building,
+  AtSign,
+  Baby,
+  Lock,
+  UserCircle,
+  Briefcase,
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 
@@ -30,8 +35,12 @@ export default function SkapaEvent() {
 
   const [formData, setFormData] = useState({
     name: '',
+    personType: '', // 'Privatperson' | 'Förening' | 'Företag eller kommun'
+    organization: '',
+    contact: '',
     eventTitle: '',
     description: '',
+    ageRange: '',
     organizer: '',
     address: '',
     city: '',
@@ -41,6 +50,17 @@ export default function SkapaEvent() {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  const setPersonType = (type) => {
+    // Clear organization if switching back to Privatperson
+    setFormData((prev) => ({
+      ...prev,
+      personType: type,
+      organization: type === 'Privatperson' ? '' : prev.organization,
+    }));
+  };
+
+  const showOrganization = formData.personType && formData.personType !== 'Privatperson';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -56,6 +76,10 @@ export default function SkapaEvent() {
       address: formData.address,
       city: formData.city,
       source_link: formData.sourceLink,
+      person_type: formData.personType,
+      organization: formData.organization,
+      contact: formData.contact,
+      age_range: formData.ageRange,
     };
 
     const showSuccessToast = () =>
@@ -73,8 +97,12 @@ export default function SkapaEvent() {
       setSuccess(true);
       setFormData({
         name: '',
+        personType: '',
+        organization: '',
+        contact: '',
         eventTitle: '',
         description: '',
+        ageRange: '',
         organizer: '',
         address: '',
         city: '',
@@ -174,6 +202,16 @@ export default function SkapaEvent() {
           <div className="relative glass rounded-[2.2rem] md:rounded-[2.5rem] shadow-soft p-7 md:p-10">
             {!success ? (
               <form onSubmit={handleSubmit} className="space-y-5">
+                {/* SUBMITTER SECTION */}
+                <div className="pb-1">
+                  <h3 className="text-xs font-black uppercase tracking-[0.18em] text-primary mb-1">
+                    Om dig
+                  </h3>
+                  <p className="text-xs text-ink-500 dark:text-ink-300">
+                    Vem är personen som tipsar oss om eventet.
+                  </p>
+                </div>
+
                 <FormField
                   label="Ditt namn"
                   icon={User}
@@ -182,6 +220,108 @@ export default function SkapaEvent() {
                   onChange={handleChange}
                   placeholder="Anna Andersson"
                 />
+
+                {/* Person type chooser */}
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-ink-700 dark:text-ink-100 ml-1">
+                    Vem är du?
+                  </label>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                    <PersonTypeOption
+                      icon={UserCircle}
+                      label="Privatperson"
+                      selected={formData.personType === 'Privatperson'}
+                      onClick={() => setPersonType('Privatperson')}
+                    />
+                    <PersonTypeOption
+                      icon={Users}
+                      label="Förening"
+                      selected={formData.personType === 'Förening'}
+                      onClick={() => setPersonType('Förening')}
+                    />
+                    <PersonTypeOption
+                      icon={Briefcase}
+                      label="Företag eller kommun"
+                      selected={formData.personType === 'Företag eller kommun'}
+                      onClick={() => setPersonType('Företag eller kommun')}
+                    />
+                  </div>
+                  {!formData.personType && (
+                    <p className="text-xs text-ink-300 ml-1">
+                      Välj ett alternativ ovan.
+                    </p>
+                  )}
+                </div>
+
+                {/* Conditional org name */}
+                <AnimatePresence initial={false}>
+                  {showOrganization && (
+                    <motion.div
+                      key="org"
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                      style={{ overflow: 'hidden' }}
+                    >
+                      <FormField
+                        label={
+                          formData.personType === 'Förening'
+                            ? 'Föreningens namn'
+                            : 'Företaget eller kommunens namn'
+                        }
+                        icon={Building2}
+                        name="organization"
+                        value={formData.organization}
+                        onChange={handleChange}
+                        placeholder={
+                          formData.personType === 'Förening'
+                            ? 't.ex. Stockholms scoutkår'
+                            : 't.ex. Stockholms stad'
+                        }
+                      />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                {/* Contact (private) */}
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-ink-700 dark:text-ink-100 ml-1 flex items-center gap-2">
+                    Kontakt
+                    <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-ink-500 dark:text-ink-300 bg-ink-100 dark:bg-ink-700/50 px-2 py-0.5 rounded-full">
+                      <Lock size={10} /> visas inte publikt
+                    </span>
+                  </label>
+                  <div className="relative group">
+                    <AtSign
+                      className="absolute left-4 top-1/2 -translate-y-1/2 text-ink-300 group-focus-within:text-primary transition-colors"
+                      size={18}
+                    />
+                    <input
+                      name="contact"
+                      required
+                      value={formData.contact}
+                      onChange={handleChange}
+                      type="text"
+                      placeholder="E-post eller telefonnummer (eller båda)"
+                      autoComplete="off"
+                      className="w-full bg-white/70 dark:bg-ink-100/5 border border-ink-100/70 dark:border-ink-700/50 rounded-2xl py-3.5 pl-12 pr-4 focus:ring-2 focus:ring-primary/40 focus:border-primary/40 outline-none transition-all text-ink-900 dark:text-white placeholder:text-ink-300"
+                    />
+                  </div>
+                  <p className="text-xs text-ink-500 dark:text-ink-300 ml-1">
+                    Endast Famies-teamet ser detta, så vi kan kontakta dig om eventet.
+                  </p>
+                </div>
+
+                {/* EVENT SECTION */}
+                <div className="pt-3 pb-1 border-t border-ink-100/70 dark:border-ink-700/50">
+                  <h3 className="text-xs font-black uppercase tracking-[0.18em] text-primary mb-1 mt-3">
+                    Om eventet
+                  </h3>
+                  <p className="text-xs text-ink-500 dark:text-ink-300">
+                    Detaljer som hjälper familjer att hitta dit.
+                  </p>
+                </div>
 
                 <FormField
                   label="Event-titel"
@@ -207,11 +347,20 @@ export default function SkapaEvent() {
                       value={formData.description}
                       onChange={handleChange}
                       rows="5"
-                      placeholder="Vad händer? För vilken ålder passar det? Vad gör det speciellt för familjer?"
+                      placeholder="Vad händer? Vad gör det speciellt för familjer?"
                       className="w-full bg-white/70 dark:bg-ink-100/5 border border-ink-100/70 dark:border-ink-700/50 rounded-2xl py-3.5 pl-12 pr-4 focus:ring-2 focus:ring-primary/40 focus:border-primary/40 outline-none transition-all resize-none text-ink-900 dark:text-white placeholder:text-ink-300"
                     />
                   </div>
                 </div>
+
+                <FormField
+                  label="För vilka åldrar passar eventet?"
+                  icon={Baby}
+                  name="ageRange"
+                  value={formData.ageRange}
+                  onChange={handleChange}
+                  placeholder="t.ex. 3+, 8-12, eller Alla åldrar"
+                />
 
                 <FormField
                   label="Arrangör"
@@ -253,7 +402,7 @@ export default function SkapaEvent() {
                 />
 
                 <button
-                  disabled={loading}
+                  disabled={loading || !formData.personType}
                   className="press w-full bg-primary text-white font-extrabold py-4 rounded-2xl shadow-pink hover:shadow-glow-pink transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed mt-2"
                 >
                   {loading ? (
@@ -331,6 +480,29 @@ function InfoCard({ icon: Icon, title, body, tint }) {
         {body}
       </p>
     </div>
+  );
+}
+
+function PersonTypeOption({ icon: Icon, label, selected, onClick }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={selected}
+      className={`press group relative flex flex-col items-center justify-center text-center gap-2 px-3 py-4 rounded-2xl border transition-all duration-300 ${
+        selected
+          ? 'bg-primary text-white border-primary shadow-pink'
+          : 'bg-white/70 dark:bg-ink-100/5 border-ink-100/70 dark:border-ink-700/50 text-ink-700 dark:text-ink-100 hover:border-primary/40'
+      }`}
+    >
+      <Icon size={20} className={selected ? 'text-white' : 'text-primary'} />
+      <span className="text-xs font-bold leading-tight">{label}</span>
+      {selected && (
+        <span className="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-white text-primary flex items-center justify-center">
+          <Check size={11} strokeWidth={3.5} />
+        </span>
+      )}
+    </button>
   );
 }
 
